@@ -1,19 +1,20 @@
 $(document).ready(function() {
+	var x = document.getElementById("demo");
+
 	function getLocation() {
 	    if (navigator.geolocation) {
 	        navigator.geolocation.getCurrentPosition(showPosition);
-	        console.log('got location');
 	    } else {
-	        $("p").innerHTML = "Geolocation is not supported by this browser.";
+	        x.innerHTML = "Geolocation is not supported by this browser.";
 	    }
 	}
 
 	function showPosition(position) {
-	    $("p").innerHTML = "Latitude: " + position.coords.latitude +
+	    x.innerHTML = "Latitude: " + position.coords.latitude +
 	    "<br>Longitude: " + position.coords.longitude;
-	    console.log('showing position');
 	}
 
-	$("body").ready(getLocation());
+	$('body').ready(getLocation());
+
 });
 
