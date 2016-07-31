@@ -1,0 +1,139 @@
+/**/
+callbackFunction({
+    "query": {
+        "count": 1,
+        "created": "2016-07-28T21:18:28Z",
+        "lang": "en-US",
+        "results": {
+            "channel": {
+                "units": {
+                    "distance": "mi",
+                    "pressure": "in",
+                    "speed": "mph",
+                    "temperature": "F"
+                },
+                "title": "Yahoo! Weather - Chicago, IL, US",
+                "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2379574/",
+                "description": "Yahoo! Weather for Chicago, IL, US",
+                "language": "en-us",
+                "lastBuildDate": "Thu, 28 Jul 2016 04:18 PM CDT",
+                "ttl": "60",
+                "location": {
+                    "city": "Chicago",
+                    "country": "United States",
+                    "region": " IL"
+                },
+                "wind": {
+                    "chill": "79",
+                    "direction": "35",
+                    "speed": "14"
+                },
+                "atmosphere": {
+                    "humidity": "77",
+                    "pressure": "991.0",
+                    "rising": "0",
+                    "visibility": "16.1"
+                },
+                "astronomy": {
+                    "sunrise": "5:41 am",
+                    "sunset": "8:12 pm"
+                },
+                "image": {
+                    "title": "Yahoo! Weather",
+                    "width": "142",
+                    "height": "18",
+                    "link": "http://weather.yahoo.com",
+                    "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+                },
+                "item": {
+                    "title": "Conditions for Chicago, IL, US at 03:00 PM CDT",
+                    "lat": "41.884151",
+                    "long": "-87.632408",
+                    "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2379574/",
+                    "pubDate": "Thu, 28 Jul 2016 03:00 PM CDT",
+                    "condition": {
+                        "code": "30",
+                        "date": "Thu, 28 Jul 2016 03:00 PM CDT",
+                        "temp": "78",
+                        "text": "Partly Cloudy"
+                    },
+                    "forecast": [{
+                        "code": "4",
+                        "date": "28 Jul 2016",
+                        "day": "Thu",
+                        "high": "78",
+                        "low": "72",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "29 Jul 2016",
+                        "day": "Fri",
+                        "high": "74",
+                        "low": "70",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "30 Jul 2016",
+                        "day": "Sat",
+                        "high": "72",
+                        "low": "68",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "34",
+                        "date": "31 Jul 2016",
+                        "day": "Sun",
+                        "high": "78",
+                        "low": "68",
+                        "text": "Mostly Sunny"
+                    }, {
+                        "code": "47",
+                        "date": "01 Aug 2016",
+                        "day": "Mon",
+                        "high": "81",
+                        "low": "70",
+                        "text": "Scattered Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "02 Aug 2016",
+                        "day": "Tue",
+                        "high": "86",
+                        "low": "71",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "03 Aug 2016",
+                        "day": "Wed",
+                        "high": "85",
+                        "low": "76",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "04 Aug 2016",
+                        "day": "Thu",
+                        "high": "84",
+                        "low": "77",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "4",
+                        "date": "05 Aug 2016",
+                        "day": "Fri",
+                        "high": "83",
+                        "low": "75",
+                        "text": "Thunderstorms"
+                    }, {
+                        "code": "34",
+                        "date": "06 Aug 2016",
+                        "day": "Sat",
+                        "high": "80",
+                        "low": "72",
+                        "text": "Mostly Sunny"
+                    }],
+                    "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Thu - Thunderstorms. High: 78Low: 72\n<BR /> Fri - Thunderstorms. High: 74Low: 70\n<BR /> Sat - Thunderstorms. High: 72Low: 68\n<BR /> Sun - Mostly Sunny. High: 78Low: 68\n<BR /> Mon - Scattered Thunderstorms. High: 81Low: 70\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2379574/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+                    "guid": {
+                        "isPermaLink": "false"
+                    }
+                }
+            }
+        }
+    }
+});

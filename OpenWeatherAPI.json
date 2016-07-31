@@ -1,0 +1,41 @@
+{
+   "coord":{
+      "lon":-80.1,
+      "lat":26.58
+   },
+   "weather":[
+      {
+         "id":802,
+         "main":"Clouds",
+         "description":"scattered clouds",
+         "icon":"03n"
+      }
+   ],
+   "base":"cmc stations",
+   "main":{
+      "temp":302.14,
+      "pressure":1018,
+      "humidity":70,
+      "temp_min":301.85,
+      "temp_max":302.59
+   },
+   "wind":{
+      "speed":5.1,
+      "deg":140
+   },
+   "clouds":{
+      "all":40
+   },
+   "dt":1469930226,
+   "sys":{
+      "type":1,
+      "id":734,
+      "message":0.0051,
+      "country":"US",
+      "sunrise":1469961912,
+      "sunset":1470010078
+   },
+   "id":4172460,
+   "name":"Seminole Manor",
+   "cod":200
+}
