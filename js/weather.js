@@ -3,6 +3,7 @@ var apiKey = "bbff6fd0939ebcb8c45356c0408e1e00";
 // http://api.openweathermap.org/data/2.5/weather?lat=26.5482183&lon=-80.1396527&APPID=bbff6fd0939ebcb8c45356c0408e1e00
 
 $(document).ready(function() {
+	var currentWeather = $('#currentWeather');
 
 	function getLocation() {
 	    if (navigator.geolocation) {
@@ -22,9 +23,24 @@ $(document).ready(function() {
 		var lat = position.coords.latitude;
 		var lon = position.coords.longitude;
 
-		var address = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
 
 		// recieve JSON data
+		$.getJSON(url, function(data) {
+			console.log(data);
+
+			var items = data.items.map(function (item) {
+        	return item.key + ': ' + item.value;
+
+        	currentWeather.empty();
+
+        	if (items.length) {
+		    	var content = '<li>' + items.join('</li><li>') + '</li>';
+        		var list = $('<ul />').html(content);
+      			showData.append(list);
+        	};
+      });
+		});
 	}
 
 	function showWeather() {
@@ -38,6 +54,7 @@ $(document).ready(function() {
 	}
 
 	getLocation();
+	getWeather();
 
 });
 
