@@ -5,65 +5,43 @@ var apiKey = "bbff6fd0939ebcb8c45356c0408e1e00";
 
 
 $(document).ready(function() {
-	var currentWeather = $('#currentWeather');
-	var lat, lon;
+	function getLocalWeather() {
 
-	function getLocation() {
-	    if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(showPosition);
-	    } else {
-	        $("#demo").html("Geolocation is not supported by this browser.");
-	    }
+		if (!navigator.geolocation) {
+			currentWeather.innerHTML = "<p>Location Services not available.</p>";
+			return;
+		}
+
+		function success(position) {
+			var lat = position.coords.latitude;
+			var lon = position.coords.longitude;
+
+			var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
+				"&lon=" + lon + "&APPID=" + apiKey;
+			console.log(url);
+
+			$.getJSON(url, function(data) {
+				$("#currentTemp").html("Temp: " + Math.round(convertKelvinToFahrenheit(data.main.temp)));
+				$("#currentConditions").html("Current Conditions: " + data.weather[0].description);
+				$("#currentHumidity").html("Humidity: " + data.main.humidity);
+		   });
+		};
+
+		function error() {
+			$("#currentWeather").innerHTML = "<p>Unable to get location</p>";
+			// can I only collapse functions greater than one line long?
+		};
+
+		function convertKelvinToFahrenheit(kelvin) {
+			return ((kelvin * 9 / 5) - 459.67);
+		}
+
+		$("#currentWeather").html = "<p>Getting weather information...</p>";
+
+	   navigator.geolocation.getCurrentPosition(success, error);
 	}
 
-	function showPosition(position) {
-	    $("#demo").html("Latitude: " + position.coords.latitude +
-	    "<br>Longitude: " + position.coords.longitude);
-
-		lat = position.coords.latitude;
-		lon = position.coords.longitude;
-		console.log("Latitude: " + lat + "| Longitude: " + lon);
-	}
-
-	function getWeather(position) {
-		// send location info to provider
-		getLocation();
-		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
-		console.log(url);
-
-		// recieve JSON data
-		$.getJSON(url, function(data) {
-			console.log(data);
-
-			var items = data.items.map(function (item) {
-	        	return item.key + ': ' + item.value;
-
-	        	currentWeather.empty();
-
-	        	if (items.length) {
-			    	var content = '<li>' + items.join('</li><li>') + '</li>';
-	        		var list = $('<ul />').html(content);
-	      		currentWeather.append(list);
-	        	}
-
-	      });
-
-	      currentWeather.text('Loading JSON data')
-		});
-	}
-
-	function showWeather() {
-		// get/show city name based on geolocation data
-		// show weather
-		//	show temp
-		//  show rain chance
-		//  show humidity?
-		//  show forecast?
-		// get background image based on location and rain/cloudy/time
-	}
-
-	
-	getWeather();
+	getLocalWeather();
 
 });
 
