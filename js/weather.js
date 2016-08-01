@@ -2,8 +2,11 @@
 var apiKey = "bbff6fd0939ebcb8c45356c0408e1e00";
 // http://api.openweathermap.org/data/2.5/weather?lat=26.5482183&lon=-80.1396527&APPID=bbff6fd0939ebcb8c45356c0408e1e00
 
+
+
 $(document).ready(function() {
 	var currentWeather = $('#currentWeather');
+	var lat, lon;
 
 	function getLocation() {
 	    if (navigator.geolocation) {
@@ -16,30 +19,36 @@ $(document).ready(function() {
 	function showPosition(position) {
 	    $("#demo").html("Latitude: " + position.coords.latitude +
 	    "<br>Longitude: " + position.coords.longitude);
+
+		lat = position.coords.latitude;
+		lon = position.coords.longitude;
+		console.log("Latitude: " + lat + "| Longitude: " + lon);
 	}
 
 	function getWeather(position) {
 		// send location info to provider
-		var lat = position.coords.latitude;
-		var lon = position.coords.longitude;
-
+		getLocation();
 		var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&APPID=" + apiKey;
+		console.log(url);
 
 		// recieve JSON data
 		$.getJSON(url, function(data) {
 			console.log(data);
 
 			var items = data.items.map(function (item) {
-        	return item.key + ': ' + item.value;
+	        	return item.key + ': ' + item.value;
 
-        	currentWeather.empty();
+	        	currentWeather.empty();
 
-        	if (items.length) {
-		    	var content = '<li>' + items.join('</li><li>') + '</li>';
-        		var list = $('<ul />').html(content);
-      			showData.append(list);
-        	};
-      });
+	        	if (items.length) {
+			    	var content = '<li>' + items.join('</li><li>') + '</li>';
+	        		var list = $('<ul />').html(content);
+	      		currentWeather.append(list);
+	        	}
+
+	      });
+
+	      currentWeather.text('Loading JSON data')
 		});
 	}
 
@@ -53,7 +62,7 @@ $(document).ready(function() {
 		// get background image based on location and rain/cloudy/time
 	}
 
-	getLocation();
+	
 	getWeather();
 
 });
