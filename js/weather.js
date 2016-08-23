@@ -21,14 +21,32 @@ $(document).ready(function() {
 			console.log(url);
 
 			$.getJSON(url, function(data) {
-				$("#currentTemp").html("Temp: " + Math.round(convertKelvinToFahrenheit(data.main.temp)));
-				$("#currentConditions").html("Current Conditions: " + data.weather[0].description);
-				$("#currentHumidity").html("Humidity: " + data.main.humidity);
+				weatherData = data;
+				$("#currentLocation").html("<h1>" + data.name + "</h1>");
+				$("#currentConditions").html("<img src='" + 
+					getConditionIcon(data.weather[0].icon) + "' />" +
+					Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
+
+				$("#currentHumidity").html("<h3>" + data.main.humidity + 
+					"% humidity</h3>");
+
+				$("input[name='scale']").change(function() {
+			   	if ($(this).val() === "celsius") {
+			   		$("#currentConditions").html("<img src='" + 
+						getConditionIcon(data.weather[0].icon) + "' />" +
+						Math.round(convertKelvinToCelsius(data.main.temp)) + "°");
+			   	} else if ($(this).val() === "fahrenheit") {
+			   		$("#currentConditions").html("<img src='" + 
+						getConditionIcon(data.weather[0].icon) + "' />" +
+						Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
+			   	}
+			   });
 		   });
+
 		};
 
 		function error() {
-			$("#currentWeather").innerHTML = "<p>Unable to get location</p>";
+			$("#currentConditions").html("<p>Unable to get location</p>");
 			// can I only collapse functions greater than one line long?
 		};
 
@@ -36,7 +54,15 @@ $(document).ready(function() {
 			return ((kelvin * 9 / 5) - 459.67);
 		}
 
-		$("#currentWeather").html = "<p>Getting weather information...</p>";
+		function convertKelvinToCelsius(kelvin) {
+			return (kelvin - 273.15);
+		}
+
+		function getConditionIcon(code) {
+			return ("http://openweathermap.org/img/w/" + code + ".png");
+		}
+
+		$("#currentConditions").html("Getting weather information...");
 
 	   navigator.geolocation.getCurrentPosition(success, error);
 	}

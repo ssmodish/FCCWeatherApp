@@ -20,11 +20,27 @@
 <body>
 	<div class="container">
 		<div class="jumbotron">
-			<p id="currentTemp"></p>
-			<p id="currentConditions"></p>
-			<p id="currentHumidity"></p>
+			<span id="currentLocation" class="text-center"></span>
+
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-5">
+					<span id="currentConditions"></span>
+					<div class="btn-group" data-toggle="buttons">
+					  <label class="btn btn-primary active">
+					    <input type="radio" name="scale" value="fahrenheit" autocomplete="off" checked> F°
+					  </label>
+					  <label class="btn btn-primary">
+					    <input type="radio" name="scale" value="celsius" autocomplete="off"> C°
+					  </label>
+					</div>
+				</div>
+			</div>
+
+			<span id="currentHumidity" class="text-center"></span>
 		</div>
 	</div>
+	<div id="footer" class="text-center">Data provided by openweathermap.org</div>
+
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
