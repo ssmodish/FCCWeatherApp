@@ -18,7 +18,6 @@ $(document).ready(function() {
 
 			var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
 				"&lon=" + lon + "&APPID=" + apiKey;
-			console.log(url);
 
 			$.getJSON(url, function(data) {
 				weatherData = data;
