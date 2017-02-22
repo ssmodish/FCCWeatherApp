@@ -1,3 +1,16 @@
 #currentConditions {
 	font-size: 30px;
 }
+
+.jumbotron {
+    margin-top: 25%;
+    box-shadow: 2px 2px 6px black;
+}
+
+#footer {
+    position: absolute;
+    bottom: 20px;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
