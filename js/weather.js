@@ -16,7 +16,7 @@ $(document).ready(function () {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
 
-            var url = "//api.openweathermap.org/data/2.5/weather?lat=" + lat +
+            var url = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
 				"&lon=" + lon + "&APPID=" + apiKey;
             console.log(url);
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
         }
 
         function getConditionIcon(code) {
-            return ("//openweathermap.org/img/w/" + code + ".png");
+            return ("https://crossorigin.me/http://openweathermap.org/img/w/" + code + ".png");
         }
 
         $("#currentConditions").html("Getting weather information...");
