@@ -35,9 +35,7 @@ $(document).ready(function () {
                 //             Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
                 //     }
             });
-        }
 
-    );
             // $.ajax({
             //     method: 'GET',
             //     url: url,
