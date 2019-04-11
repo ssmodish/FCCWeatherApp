@@ -1,5 +1,5 @@
 // OpenWeather
-var apiKey = "bbff6fd0939ebcb8c45356c0408e1e00";
+var apiKey = "dc33f0d288f071743e74a0386d9159f4\n";
 // http://api.openweathermap.org/data/2.5/weather?lat=26.5482183&lon=-80.1396527&APPID=bbff6fd0939ebcb8c45356c0408e1e00
 
 
@@ -23,7 +23,7 @@ $(document).ready(function () {
             $.getJSON(url, function(data) {
                 weatherData = data;
                 $("#currentLocation").html("<h1>" + data.name + "</h1>");
-                $("#currentConditions").html("<img src='" +
+                $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
 					getConditionIcon(data.weather[0].icon) + "' />" +
 					Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
 
@@ -32,24 +32,22 @@ $(document).ready(function () {
 
                 $("input[name='scale']").change(function () {
                     if ($(this).val() === "celsius") {
-                        $("#currentConditions").html("<img src='" +
+                        $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
                             getConditionIcon(data.weather[0].icon) + "' />" +
                             Math.round(convertKelvinToCelsius(data.main.temp)) + "°");
                     } else if ($(this).val() === "fahrenheit") {
-                        $("#currentConditions").html("<img src='" +
+                        $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
                             getConditionIcon(data.weather[0].icon) + "' />" +
                             Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
                     }
                 });
             });
 
-        };
-
+        }
         function error() {
             $("#currentConditions").html("<p>Unable to get location</p>");
             // can I only collapse functions greater than one line long?
-        };
-
+        }
         function convertKelvinToFahrenheit(kelvin) {
             return ((kelvin * 9 / 5) - 459.67);
         }
