@@ -16,33 +16,40 @@ $(document).ready(function () {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
 
-            var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat +
+            var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
 				"&lon=" + lon + "&APPID=" + apiKey + "&callback=test";
             console.log(url);
 
-            $.getJSON(url, function(data) {
-                weatherData = data;
-                $("#currentLocation").html("<h1>" + data.name + "</h1>");
-                $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
-					getConditionIcon(data.weather[0].icon) + "' />" +
-					Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
-
-                $("#currentHumidity").html("<h3>" + data.main.humidity +
-					"% humidity</h3>");
-
-                $("input[name='scale']").change(function () {
-                    if ($(this).val() === "celsius") {
-                        $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
-                            getConditionIcon(data.weather[0].icon) + "' />" +
-                            Math.round(convertKelvinToCelsius(data.main.temp)) + "°");
-                    } else if ($(this).val() === "fahrenheit") {
-                        $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
-                            getConditionIcon(data.weather[0].icon) + "' />" +
-                            Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
-                    }
-                });
-            });
-
+            // $.getJSON(url, function(data) {
+            //     weatherData = data;
+            //     $("#currentLocation").html("<h1>" + data.name + "</h1>");
+            //     $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
+            // 		getConditionIcon(data.weather[0].icon) + "' />" +
+            // 		Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
+            //
+            //     $("#currentHumidity").html("<h3>" + data.main.humidity +
+            // 		"% humidity</h3>");
+            //
+            //     $("input[name='scale']").change(function () {
+            //         if ($(this).val() === "celsius") {
+            //             $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
+            //                 getConditionIcon(data.weather[0].icon) + "' />" +
+            //                 Math.round(convertKelvinToCelsius(data.main.temp)) + "°");
+            //         } else if ($(this).val() === "fahrenheit") {
+            //             $("#currentConditions").html("<img alt='" + data.weather.main + "' src='" +
+            //                 getConditionIcon(data.weather[0].icon) + "' />" +
+            //                 Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
+            //         }
+            //     });
+            // });
+            $.ajax({
+                method: 'GET',
+                url: url,
+                dataType: 'jsonp',
+                success: (res) => {
+                    console.log(res);
+                }
+            })
         }
         function error() {
             $("#currentConditions").html("<p>Unable to get location</p>");
@@ -57,7 +64,7 @@ $(document).ready(function () {
         }
 
         function getConditionIcon(code) {
-            return ("https://openweathermap.org/img/w/" + code + ".png&callback=test");
+            return ("http://openweathermap.org/img/w/" + code + ".png&callback=test");
         }
 
         $("#currentConditions").html("Getting weather information...");
