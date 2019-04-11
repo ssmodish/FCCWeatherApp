@@ -16,7 +16,7 @@ $(document).ready(function () {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
 
-            var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
+            var url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat +
 				"&lon=" + lon + "&APPID=" + apiKey + "&callback=test";
             console.log(url);
 
@@ -57,7 +57,7 @@ $(document).ready(function () {
         }
 
         function getConditionIcon(code) {
-            return ("http://openweathermap.org/img/w/" + code + ".png&callback=test");
+            return ("https://openweathermap.org/img/w/" + code + ".png&callback=test");
         }
 
         $("#currentConditions").html("Getting weather information...");
