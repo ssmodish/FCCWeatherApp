@@ -1,9 +1,3 @@
-// OpenWeather
-var apiKey = "dc33f0d288f071743e74a0386d9159f4\n";
-// http://api.openweathermap.org/data/2.5/weather?lat=26.5482183&lon=-80.1396527&APPID=bbff6fd0939ebcb8c45356c0408e1e00
-
-
-
 $(document).ready(function () {
     function getLocalWeather() {
 
@@ -16,8 +10,7 @@ $(document).ready(function () {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
 
-            var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat +
-				"&lon=" + lon + "&APPID=" + apiKey + "&callback=test";
+            var url = "https://api.weather.gov/points/" + lat + "," + lon;
             console.log(url);
 
             // $.getJSON(url, function(data) {
