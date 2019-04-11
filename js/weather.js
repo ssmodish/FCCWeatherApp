@@ -42,14 +42,17 @@ $(document).ready(function () {
             //         }
             //     });
             // });
-            $.ajax({
-                method: 'GET',
-                url: url,
-                dataType: 'jsonp',
-                success: (res) => {
-                    console.log(res);
-                }
-            })
+            // $.ajax({
+            //     method: 'GET',
+            //     url: url,
+            //     dataType: 'jsonp',
+            //     success: (res) => {
+            //         console.log(res);
+            //     }
+            // })
+            fetchJsonp(url)
+                .then(res => res.json())
+                .then(json => console.log(json))
         }
         function error() {
             $("#currentConditions").html("<p>Unable to get location</p>");
