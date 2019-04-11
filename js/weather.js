@@ -35,23 +35,13 @@ $(document).ready(function () {
                 //             Math.round(convertKelvinToFahrenheit(data.main.temp)) + "°");
                 //     }
             });
-
-            // $.ajax({
-            //     method: 'GET',
-            //     url: url,
-            //     dataType: 'jsonp',
-            //     success: (res) => {
-            //         console.log(res);
-            //     }
-            // })
-// fetchJsonp(url)
-//     .then(res => res.json())
-//     .then(json => console.log(json))
         }
+
         function error() {
             $("#currentConditions").html("<p>Unable to get location</p>");
             // can I only collapse functions greater than one line long?
         }
+
         function convertKelvinToFahrenheit(kelvin) {
             return ((kelvin * 9 / 5) - 459.67);
         }
